@@ -1,4 +1,4 @@
-from Flask_Script import Manager
+from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 from app import create_app
 from database.models import db, Actor, Movie

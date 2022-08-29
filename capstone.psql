@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.3
--- Dumped by pg_dump version 12.3
+-- Dumped from database version 14.5
+-- Dumped by pg_dump version 14.5
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -57,41 +57,18 @@ ALTER SEQUENCE public.actors_id_seq OWNED BY public.actors.id;
 
 
 --
--- Name: alembic_version; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.alembic_version (
-    version_num character varying(32) NOT NULL
-);
-
-
-ALTER TABLE public.alembic_version OWNER TO postgres;
-
---
 -- Name: movies; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.movies (
     id integer NOT NULL,
     title character varying NOT NULL,
-    release_date date NOT NULL,
-    genre character varying NOT NULL
+    release_date date,
+    genre character varying
 );
 
 
 ALTER TABLE public.movies OWNER TO postgres;
-
---
--- Name: movies_actiors_worked_in; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.movies_actiors_worked_in (
-    movie_id integer NOT NULL,
-    actor_id integer NOT NULL
-);
-
-
-ALTER TABLE public.movies_actiors_worked_in OWNER TO postgres;
 
 --
 -- Name: movies_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -134,17 +111,19 @@ ALTER TABLE ONLY public.movies ALTER COLUMN id SET DEFAULT nextval('public.movie
 --
 
 COPY public.actors (id, name, age, gender) FROM stdin;
-1	rish	23	male
-2	gopi	26	male
-\.
-
-
---
--- Data for Name: alembic_version; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.alembic_version (version_num) FROM stdin;
-f12c63f40571
+1	Chris Evans	41	M
+2	Jackie Chan	68	M
+3	Dhanush	39	M
+4	Taissa Farmiga	28	F
+5	Hero Fiennes Tiffin	24	M
+6	Josephine Landford	25	F
+7	Scarlett Johansson	37	F
+8	Elizabeth Olsen	33	F
+9	Chris Hemsworth	39	M
+37	Alia Bhatt	29	Female
+38	Priyanka Chopra Jonas	40	F
+31	Priyanka Chopra	40	F
+40	Priyanka Chopra Jonas	40	F
 \.
 
 
@@ -153,18 +132,15 @@ f12c63f40571
 --
 
 COPY public.movies (id, title, release_date, genre) FROM stdin;
-3	Dark knight	2020-01-01	Super Hero
-4	Rush hour	2020-01-01	Comedy
-1	Avengers	2019-01-02	SuperHero
-5	Avengers	2019-01-02	SuperHero
-\.
-
-
---
--- Data for Name: movies_actiors_worked_in; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.movies_actiors_worked_in (movie_id, actor_id) FROM stdin;
+2	Rush Hour	2020-01-01	Comedy
+3	After	2019-04-19	Romantic
+4	The Gray Man	2022-07-22	Action
+5	The Nun	2018-09-07	Horror
+6	Spiderhead	2022-06-22	Sci-Fi
+16	The Twilight Saga	2009-11-20	Romantic
+17	Twilight	2009-11-20	Romantic
+18	Twilight	2009-11-20	Romantic
+1	Avengers	2012-04-27	SuperHero
 \.
 
 
@@ -172,14 +148,14 @@ COPY public.movies_actiors_worked_in (movie_id, actor_id) FROM stdin;
 -- Name: actors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.actors_id_seq', 2, true);
+SELECT pg_catalog.setval('public.actors_id_seq', 41, true);
 
 
 --
 -- Name: movies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.movies_id_seq', 5, true);
+SELECT pg_catalog.setval('public.movies_id_seq', 18, true);
 
 
 --
@@ -191,22 +167,6 @@ ALTER TABLE ONLY public.actors
 
 
 --
--- Name: alembic_version alembic_version_pkc; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.alembic_version
-    ADD CONSTRAINT alembic_version_pkc PRIMARY KEY (version_num);
-
-
---
--- Name: movies_actiors_worked_in movies_actiors_worked_in_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.movies_actiors_worked_in
-    ADD CONSTRAINT movies_actiors_worked_in_pkey PRIMARY KEY (movie_id, actor_id);
-
-
---
 -- Name: movies movies_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -215,21 +175,6 @@ ALTER TABLE ONLY public.movies
 
 
 --
--- Name: movies_actiors_worked_in movies_actiors_worked_in_actor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.movies_actiors_worked_in
-    ADD CONSTRAINT movies_actiors_worked_in_actor_id_fkey FOREIGN KEY (actor_id) REFERENCES public.actors(id);
-
-
---
--- Name: movies_actiors_worked_in movies_actiors_worked_in_movie_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.movies_actiors_worked_in
-    ADD CONSTRAINT movies_actiors_worked_in_movie_id_fkey FOREIGN KEY (movie_id) REFERENCES public.movies(id);
-
-
---
 -- PostgreSQL database dump complete
 --
+
