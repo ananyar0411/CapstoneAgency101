@@ -17,7 +17,7 @@ class CastingAgencyTestCase(unittest.TestCase):
     def setUp(self):
         self.app = create_app()
         self.client = self.app.test_client
-        setup_db(self.app, TEST_DATABASE_URI)
+        setup_db(self.app, TEST_DATABASE_URL)
         self.casting_assistant = ASSISTANT_TOKEN
         self.casting_director = DIRECTOR_TOKEN
         self.executive_producer = PRODUCER_TOKEN
