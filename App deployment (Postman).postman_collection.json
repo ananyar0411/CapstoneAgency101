@@ -1,0 +1,30 @@
+{
+	"info": {
+		"_postman_id": "9abf3e88-531f-4e08-9706-52f6dd75c26b",
+		"name": "App deployment (Postman)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22049397"
+	},
+	"item": [
+		{
+			"name": "https://castingagency101.herokuapp.com/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://castingagency101.herokuapp.com/",
+					"protocol": "https",
+					"host": [
+						"castingagency101",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
