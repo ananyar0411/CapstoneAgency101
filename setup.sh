@@ -8,4 +8,4 @@ export ALGORITHMS=['RS256']
 export FLASK_APP="app.py"
 export FLASK_ENV=development
 export TEST_DATABASE_URI="postgresql://postgres:anniebebo47@localhost:5432/capstone_testing"
-export DATABASE_URI="postgresql://fejdyekaktrlaf:9508794f571624882ca2abba74c19213e973c48fa2ec4d1f7f78cf2c33ad2530@ec2-34-199-68-114.compute-1.amazonaws.com:5432/d5r84srla8kumt"
+export DATABASE_URI="postgres://fejdyekaktrlaf:9508794f571624882ca2abba74c19213e973c48fa2ec4d1f7f78cf2c33ad2530@ec2-34-199-68-114.compute-1.amazonaws.com:5432/d5r84srla8kumt"
