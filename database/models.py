@@ -3,7 +3,7 @@ from flask_migrate import Migrate
 import os
 db = SQLAlchemy()
 
-DATABASE_URI = os.getenv('DATABASE_URI')
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 def setup_db(app, database_path=DATABASE_URI):
     app.config["SQLALCHEMY_DATABASE_URI"] = database_path
